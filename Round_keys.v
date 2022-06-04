@@ -44,8 +44,8 @@ sbox s4(key[120:123],key[124:127],key2[120:127]);
 //nextkey is also numbered column wise
 
 assign nextkey[0:31]  = key2[96:127]^key[0:31]^rcon[0:31]; 
-assign nextkey[32:63]  = key2[96:127]^key[0:31]^key[32:63]^rcon[0:31]; 
-assign nextkey[64:95]  = key2[96:127]^key[0:31]^key[32:63]^key[64:95]^rcon[0:31]; 
-assign nextkey[96:127]  = key2[96:127]^key[0:31]^key[32:63]^key[64:95]^previous_key[96:127]^rcon[0:31]; 
+  assign nextkey[32:63]  = key2[96:127]^key[0:31]^key[32:63]^rcon[0:31]; // nextkey[0:31]^key[32:63]
+  assign nextkey[64:95]  = key2[96:127]^key[0:31]^key[32:63]^key[64:95]^rcon[0:31]; // nextkey[32:63]^key[64:95]
+assign nextkey[96:127]  = key2[96:127]^key[0:31]^key[32:63]^key[64:95]^previous_key[96:127]^rcon[0:31]; // nextkey[64:95]^previous_key[96:127]
 
 endmodule
